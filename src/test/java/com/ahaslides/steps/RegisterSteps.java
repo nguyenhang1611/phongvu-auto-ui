@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.Step;
 
 public class RegisterSteps {
 
+	private static final String ACTUAL_ERR_MSG = "Message";
 	RegisterPage registerPage;
 
 	@Step
@@ -44,7 +45,7 @@ public class RegisterSteps {
 	
 	@Step
 	public void should_see_error_message_correct(String expectedErrMsg) {
-		assertEquals(expectedErrMsg,"Message");
+		assertEquals(expectedErrMsg,ACTUAL_ERR_MSG);
 	}
 	
 }

@@ -12,4 +12,9 @@ public class HomeSteps {
 	public void open_home_page() {
 		homePage.open();
 	}
+	
+	@Step
+	public void click_on_login_link_text() {
+		homePage.clickOnLoginLinkText();
+	}
 }

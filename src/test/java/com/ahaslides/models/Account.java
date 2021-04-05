@@ -9,7 +9,6 @@ public class Account {
 	private String fullname;
 
 	public Account(String email, String password, String fullname) {
-		super();
 		this.email = email;
 		this.password = password;
 		this.fullname = fullname;
