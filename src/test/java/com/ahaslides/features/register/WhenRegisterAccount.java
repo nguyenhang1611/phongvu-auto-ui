@@ -28,7 +28,7 @@ public class WhenRegisterAccount {
 	
 
 	@Test
-	@WithTag("ahaslides")
+//	@WithTag("ahaslides")
 	public void login_with() {
 		homeSteps.open_home_page();		
 		registerSteps.register_new_account(infor);
