@@ -15,8 +15,11 @@ import net.thucydides.core.annotations.WithTag;
 
 @RunWith(SerenityRunner.class)
 public class WhenLogin {
-	Account infor = new Account("hangnguyenycn@gmail.com", "hangnguyenycn12", "Nguyễn Thị Hằng");
-	
+//	Account infor = new Account("hangnguyenycn@gmail.com", "hangnguyenycn12", "Nguyễn Thị Hằng");
+	Account infor = Account
+			.emailAdress("hangnguyenycn@gmail.com")
+			.withPassword("hangnguyenycn12")
+			.build(); 
 	@Managed(uniqueSession=true)
 	public WebDriver driver;
 	
@@ -28,7 +31,7 @@ public class WhenLogin {
 	
 
 	@Test
-	@WithTag("ahaslides")
+	@WithTag("ahaslides-login")
 	public void login_with() {
 		homeSteps.open_home_page();
 		homeSteps.click_on_login_link_text();
