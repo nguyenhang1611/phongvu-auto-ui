@@ -11,15 +11,17 @@ import com.ahaslides.steps.RegisterSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
 
 @RunWith(SerenityRunner.class)
 public class WhenRegisterAccount {
-	private static final String RANDOM_STRING = RandomStringUtils.randomAlphabetic(10);
+	private static final String RANDOM_STRING = RandomStringUtils.randomNumeric(10);
+	
 //	Account infor = new Account("hangnguyenycn@gmail.com", "hangnguyenycn12", "Nguyễn Thị Hằng");
 	Account infor = Account
-			.emailAdress("hangnguyenycn@gmai.com", RANDOM_STRING)
+			.emailAdress("hangnguyenycn+"+RANDOM_STRING+"@gmai.com")
 			.withPassword("123456")
 			.withFullname("Nguyễn Thị Hằng")
 			.build();
@@ -34,7 +36,7 @@ public class WhenRegisterAccount {
 	RegisterSteps registerSteps;
 	
 
-	@Test
+	@Pending @Test
 	@WithTag("ahaslides")
 	public void login_with() {
 		homeSteps.open_home_page();		

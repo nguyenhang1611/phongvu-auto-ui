@@ -30,7 +30,7 @@ public class SearchByKeywordStory {
 
     }
 
-    @Test
+    @Pending @Test 
     public void searching_by_keyword_banana_should_display_the_corresponding_article() {
         anna.is_the_home_page();
         anna.looks_for("pear");

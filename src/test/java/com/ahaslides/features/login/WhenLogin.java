@@ -10,6 +10,7 @@ import com.ahaslides.steps.LoginSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
 
@@ -30,7 +31,7 @@ public class WhenLogin {
 	LoginSteps loginSteps;
 	
 
-	@Test
+	@Pending @Test
 	@WithTag("ahaslides-login")
 	public void login_with() {
 		homeSteps.open_home_page();
