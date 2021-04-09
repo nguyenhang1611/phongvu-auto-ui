@@ -21,7 +21,8 @@ public class WhenLogin {
 			.emailAdress("hangnguyenycn@gmail.com")
 			.withPassword("hangnguyenycn12")
 			.build(); 
-	@Managed(uniqueSession=true)
+	@Managed
+	//(uniqueSession=true)
 	public WebDriver driver;
 	
 	@Steps
@@ -31,7 +32,7 @@ public class WhenLogin {
 	LoginSteps loginSteps;
 	
 
-	@Pending @Test
+	@Test
 	@WithTag("ahaslides-login")
 	public void login_with() {
 		homeSteps.open_home_page();
