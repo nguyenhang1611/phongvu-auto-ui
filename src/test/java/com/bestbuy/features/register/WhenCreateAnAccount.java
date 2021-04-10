@@ -10,6 +10,7 @@ import com.bestbuy.steps.serenity.HomeSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Pending;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.WithTag;
 
@@ -35,7 +36,7 @@ public class WhenCreateAnAccount{
 	CreateAccountSteps createAccountSteps;
 	
 	
-	@Test
+	@Pending @Test
 	@WithTag("best")
 	public void create_an_account_with(Account infor) {
 		homeSteps.redirect_to_create_account();

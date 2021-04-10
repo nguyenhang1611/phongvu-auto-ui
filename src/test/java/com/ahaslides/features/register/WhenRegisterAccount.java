@@ -1,5 +1,7 @@
 package com.ahaslides.features.register;
 
+import static org.junit.Assert.assertEquals;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import com.ahaslides.models.Account;
 import com.ahaslides.steps.HomeSteps;
 import com.ahaslides.steps.RegisterSteps;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Pending;
@@ -25,22 +28,30 @@ public class WhenRegisterAccount {
 			.withPassword("123456")
 			.withFullname("Nguyễn Thị Hằng")
 			.build();
+	
 	public static final String EXPECTED_ERR_MSG = "Message";
+	
 	@Managed(uniqueSession=true)
 	public WebDriver driver;
 	
 	@Steps
 	HomeSteps homeSteps;
 	
-	@Steps
+	@Steps(shared=true)
 	RegisterSteps registerSteps;
 	
 
-	@Pending @Test
-	@WithTag("ahaslides")
-	public void login_with() {
+	@Test
+	@WithTag("register")
+	public void register_new_account() {
 		homeSteps.open_home_page();		
 		registerSteps.register_new_account(infor);
 		registerSteps.should_see_error_message_correct(EXPECTED_ERR_MSG);
+	}
+	
+	@Test
+	@WithTag("register")
+	public void verify_email_variable_session() {
+		assertEquals("hangnguyenycn", Serenity.sessionVariableCalled("Email"));
 	}
 }

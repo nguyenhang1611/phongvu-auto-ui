@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import com.ahaslides.models.Account;
 import com.ahaslides.pages.RegisterPage;
 
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 
 public class RegisterSteps {
@@ -14,6 +15,9 @@ public class RegisterSteps {
 
 	@Step
 	public void register_new_account(Account account) {
+		Serenity.setSessionVariable("Email").to(account.getEmail());
+		Serenity.setSessionVariable("Fullname").to(account.getFullname());
+
 		enter_email(account.getEmail());
 		enter_password(account.getPassword());
 		enter_fullname(account.getFullname());

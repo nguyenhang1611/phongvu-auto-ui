@@ -1,9 +1,11 @@
 package com.ahaslides.customdriver;
 
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import net.thucydides.core.webdriver.DriverSource;
@@ -19,12 +21,13 @@ public class MyCustomDriver implements DriverSource {
 		
     	// 2 DesiredCapabilities
     	DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		
+		capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+
 		// 3. Options
     	FirefoxOptions options = new FirefoxOptions(capabilities);
-    	options.addArguments("--headless");
-    	// options.addArguments("--width=800");
-    	// options.addArguments("--height=800");
+//    	options.addArguments("--headless");
+    	 options.addArguments("--width=800");
+    	 options.addArguments("--height=800");
 //    	options.addArguments("-private");
     	
 		// 4. Constructor
