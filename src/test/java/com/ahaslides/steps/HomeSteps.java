@@ -17,4 +17,9 @@ public class HomeSteps {
 	public void click_on_login_link_text() {
 		homePage.clickOnLoginLinkText();
 	}
+	
+	@Step
+	public void cut_string(String value) {
+		homePage.cut(value);
+	}
 }

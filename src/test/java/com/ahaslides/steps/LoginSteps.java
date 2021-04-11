@@ -2,6 +2,8 @@ package com.ahaslides.steps;
 
 import static org.junit.Assert.assertEquals;
 
+import org.openqa.selenium.WebDriver;
+
 import com.ahaslides.models.Account;
 import com.ahaslides.pages.LoginPage;
 import com.ahaslides.pages.MyPresentationPage;
@@ -45,4 +47,15 @@ public class LoginSteps {
 	public String get_fullname() {
 		return myPresentationPage.getFullname();
 	}
+	
+	@Step
+	public void paste() {
+		loginPage.paste();
+	}
+	
+	@Step
+	public void switch_to_login_tab(WebDriver driver) {
+		loginPage.switchToLoginTab(driver);
+	}
+	
 }
