@@ -1,5 +1,10 @@
 package com.ahaslides.pages;
 
+import java.util.Set;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+
 import com.ahaslides.MyPageObject;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -19,5 +24,14 @@ public class HomePage extends MyPageObject {
 	
 	public void cut(String value) {
 		cutTextFrom(searchAccessCodeTxt, value);
+	}
+	
+	private WebElementFacade uploadmode1;
+	public void uploadFileToSomeWhere(String pathFile, WebDriver webdriver) {
+		element(uploadmode1).click();
+//		Set<String> handles = webdriver.getWindowHandles();
+
+		
+		uploadFile(pathFile, webdriver);
 	}
 }

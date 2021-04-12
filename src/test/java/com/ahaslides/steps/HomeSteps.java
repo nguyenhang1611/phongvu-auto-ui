@@ -1,5 +1,7 @@
 package com.ahaslides.steps;
 
+import org.openqa.selenium.WebDriver;
+
 import com.ahaslides.pages.HomePage;
 
 import net.thucydides.core.annotations.Step;
@@ -21,5 +23,10 @@ public class HomeSteps {
 	@Step
 	public void cut_string(String value) {
 		homePage.cut(value);
+	}
+	
+	@Step
+	public void upload(String pathFile, WebDriver webdriver) {
+		homePage.uploadFileToSomeWhere(pathFile, webdriver);
 	}
 }

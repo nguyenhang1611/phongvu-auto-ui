@@ -16,6 +16,7 @@ import net.thucydides.core.annotations.WithTag;
 public class WhenOpenApplication {
 	
 	private static final String TEACHING_WEBDRIVER_ONLINE = "Teaching webdriver online";
+	private static final String PATH_FILE = "/Users/hangnt/Documents/image.jpg";
 
 	@Managed
 	WebDriver webdriver;
@@ -36,6 +37,13 @@ public class WhenOpenApplication {
 		loginSteps.switch_to_login_tab(webdriver);
 		
 		loginSteps.paste();
+	}
+	
+	@Test
+	@WithTag("upload_image")
+	public void upload_image() {
+		homeSteps.open_home_page();
+		homeSteps.upload(PATH_FILE, webdriver);
 	}
 
 }
