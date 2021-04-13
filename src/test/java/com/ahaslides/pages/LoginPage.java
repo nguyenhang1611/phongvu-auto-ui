@@ -15,7 +15,7 @@ public class LoginPage extends MyPageObject{
 	public static final String LOGIN_BTN = "//span[contains(text(),'Log In')]//parent::button";
 	
 	@FindBy(xpath=EMAIL_TXT)
-	private WebElementFacade emailTxt;
+	public WebElementFacade emailTxt;
 
 	public void enterEmail(String email) {
 		element(EMAIL_TXT).type(email);
@@ -35,6 +35,8 @@ public class LoginPage extends MyPageObject{
 	
 	public void switchToLoginTab(WebDriver driver) {
 		ArrayList<String> tab2 = new ArrayList<String> (driver.getWindowHandles());
-		driver.switchTo().window(tab2.get(1));
+		if(tab2.size()>1) {
+			driver.switchTo().window(tab2.get(1));
+		}
 	}
 }

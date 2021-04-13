@@ -6,9 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -22,6 +20,11 @@ public class MyPageObject extends PageObject{
 	public void scrollTo(WebElementFacade webElement) {
 		evaluateJavascript("arguments[0].scrollIntoView(true);", webElement);
 	}
+	
+	public void jSClickOn(WebElementFacade webElement) {
+		evaluateJavascript("arguments[0].click();", webElement);
+	}
+	
 	public void cutTextFrom(WebElementFacade webElement, String value) {
 		withAction()
 		.moveToElement(webElement)
@@ -47,6 +50,45 @@ public class MyPageObject extends PageObject{
 		.perform();
 	}
 	
+	public void openContentMenu(WebElementFacade webElement, String value) {
+		withAction()
+		.moveToElement(webElement)
+		.click()
+		.sendKeys(webElement, value)
+		.keyDown(Keys.COMMAND).sendKeys("a").keyUp(Keys.COMMAND)
+		.contextClick()
+		.build()
+		.perform();
+		waitABit(3000);
+	
+	}
+	
+	public void pressItemContentMenu(int indexItem) {
+		Robot robot;
+		try {
+			robot = new Robot();
+			robot.setAutoDelay(500);
+			for (int i = 1; i<= indexItem; i++) {
+				robot.keyPress(KeyEvent.VK_DOWN);
+			}
+			robot.keyPress(KeyEvent.VK_ENTER);
+			
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void selectElementToPaste(WebElementFacade webElement) {
+		withAction()
+		.moveToElement(webElement)
+		.click()
+		.contextClick()
+		.build()
+		.perform();
+		waitABit(3000);
+	}
+	
 	public static void setClipboardData(String pathFile) {
 		//StringSelection is a class that can be used for copy and paste operations
 		StringSelection stringSelection = new StringSelection(pathFile);
@@ -54,7 +96,7 @@ public class MyPageObject extends PageObject{
 	}
 	
 	
-	public static void uploadFile(String fileLocation, WebDriver webdriver) {
+	public static void uploadFile(String fileLocation) {
 		// Setting clipboard with file location
 		setClipboardData(fileLocation);
 		//native key strokes for COMMAND, V and ENTER keys

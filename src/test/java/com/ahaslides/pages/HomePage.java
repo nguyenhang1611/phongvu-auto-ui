@@ -1,10 +1,5 @@
 package com.ahaslides.pages;
 
-import java.util.Set;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-
 import com.ahaslides.MyPageObject;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -16,7 +11,7 @@ public class HomePage extends MyPageObject {
 	public static final String SEARCH_ACCESS_CODE_TXT ="//div[contains(@class,'box-search-accesscode')]";
 	
 	@FindBy(xpath = SEARCH_ACCESS_CODE_TXT)
-	private WebElementFacade searchAccessCodeTxt;
+	public WebElementFacade searchAccessCodeTxt;
 	
 	public void clickOnLoginLinkText() {
 		element(LOGIN_REDIRECT_LINK).click();
@@ -27,11 +22,8 @@ public class HomePage extends MyPageObject {
 	}
 	
 	private WebElementFacade uploadmode1;
-	public void uploadFileToSomeWhere(String pathFile, WebDriver webdriver) {
+	public void uploadFileToSomeWhere(String pathFile) {
 		element(uploadmode1).click();
-//		Set<String> handles = webdriver.getWindowHandles();
-
-		
-		uploadFile(pathFile, webdriver);
+		uploadFile(pathFile);
 	}
 }

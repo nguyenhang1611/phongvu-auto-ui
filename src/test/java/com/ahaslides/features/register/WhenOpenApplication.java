@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.ahaslides.steps.HomeSteps;
 import com.ahaslides.steps.LoginSteps;
+import com.ahaslides.steps.PracticeSteps;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
@@ -27,6 +28,8 @@ public class WhenOpenApplication {
 	@Steps
 	LoginSteps loginSteps;
 	
+	@Steps
+	PracticeSteps practiceSteps;
 	
 	@Test
 	@WithTag("open")
@@ -43,7 +46,24 @@ public class WhenOpenApplication {
 	@WithTag("upload_image")
 	public void upload_image() {
 		homeSteps.open_home_page();
-		homeSteps.upload(PATH_FILE, webdriver);
+		homeSteps.upload(PATH_FILE);
+	}
+	
+	@Test
+	@WithTag("practice_js")
+	public void practice_js() {
+		homeSteps.open_home_page();
+		practiceSteps.practice_steps();
 	}
 
+	@Test
+	@WithTag("robot_other")
+	public void should_copy_paste_text_by_robot() {
+		homeSteps.open_home_page();
+		practiceSteps.copy_by_mouse(TEACHING_WEBDRIVER_ONLINE);
+		homeSteps.click_on_login_link_text();
+		loginSteps.switch_to_login_tab(webdriver);
+		practiceSteps.paste_by_mouse();
+		
+	}
 }

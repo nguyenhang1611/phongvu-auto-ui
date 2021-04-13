@@ -26,7 +26,7 @@ public class HomeSteps {
 	}
 	
 	@Step
-	public void upload(String pathFile, WebDriver webdriver) {
-		homePage.uploadFileToSomeWhere(pathFile, webdriver);
+	public void upload(String pathFile) {
+		homePage.uploadFileToSomeWhere(pathFile);
 	}
 }
